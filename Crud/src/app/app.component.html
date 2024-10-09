@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card mt-4">
+        <div class="card-body">
+          <div class="card-title">
+            Contactos
+            <div class="form-group mt-2 d-flex justify-content-start">
+              <input type="text" [(ngModel)]="selectedContactos.Nombre" class="form-control me-2" placeholder="Nombre">
+              <input type="text" [(ngModel)]="selectedContactos.Entidad" class="form-control me-2" placeholder="Entidad">
+              <input type="text" [(ngModel)]="selectedContactos.Email" class="form-control me-2" placeholder="Email">
+              <button (click)="agregaryeditar()" class="btn btn-primary">Agregar</button>
+              <button *ngIf="selectedContactos.id !== 0" class="btn btn-danger" (click)="Eliminar()">Eliminar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mt-4">
+        <div class="card-body">
+          <div class="card-title">
+            Buscar contacto
+            <div class="form-group d-flex justify-content-start mt-2">
+              <input [(ngModel)]="searchText" placeholder="Buscar contacto." (input)="aplicarFiltro()"class="form-control me-2"/>
+              <button (click)="buscar()" class="btn btn-primary">Buscar</button>
+            </div>
+          </div>
+        </div>
+    </div>
+      <ul class="list-group mt-4">
+        <li 
+          *ngFor="let contacto of filteredContactos" class="list-group-item list-group-item-action" (click)="abriryeditar(contacto)"[class.active]="contacto == selectedContactos">
+        <span class="badge bg-primary">{{ contacto.id }}</span> {{ contacto.Nombre }} - {{ contacto.Entidad }} - {{ contacto.Email }}
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <img src="https://th.bing.com/th/id/R.84c42cef879b2573b10743374dd8825e?rik=Oq%2btrRJnW1hNAg&riu=http%3a%2f%2fassets.stickpng.com%2fimages%2f5847ea22cef1014c0b5e4833.png&ehk=VIZ5rAQClZprZukxAbReGMmR%2fCDp9cQDO%2fp7R1I6Lf0%3d&risl=&pid=ImgRaw&r=0" alt="logo angular" width="200">
+    </div>
+  </div>
+</div>
